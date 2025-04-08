@@ -18,7 +18,7 @@
             <div>
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand">Usuários</a>
+                        <a class="navbar-brand"> Usuario</a>
                         <form class="d-flex" role="search">
                             <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Usuário" >
                             <button class="btn btn-outline-success" type="submit">
@@ -35,9 +35,18 @@
             <h3>Lista de Usuário</h3>  
         </div>
 
-        <div class="col-md-10" style="margin:2rem 0 2rem 7rem">
-            <a href="index.php" class="btn btn-outline-secondary" >Voltar</a>
-            <a href="frmCadastro.php" class="btn btn-success">Criar Usuário</a>
+        <div class="col-md-10" style="margin:2rem 0 2rem 7rem; display:flex; justify-content:space-between; align-inten:center">
+            <div>
+                <a href="index.php" class="btn btn-outline-secondary" >Voltar</a>
+                <a href="frmUsuario.php" class="btn btn-success">Criar Usuário</a>
+            </div>
+
+            <!-- <form class="d-flex" role="search">
+                <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Usuário" >
+                <button class="btn btn-outline-success" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form> -->
         </div>
 
         <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px">
