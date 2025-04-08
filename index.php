@@ -1,3 +1,47 @@
+<?php
+    include_once("includ/crud.php");
+
+   if(isset($_POST["btLogar"])) {
+        if($_POST["intEmail"] == "") {
+            echo "Preencha o campo email";
+        }
+        else if($_POST["intSenha"] == "") {
+            echo "Preencha o campo senha";
+        }
+        else{
+            $conexao = openConnect();
+
+            $email = mysqli_real_escape_string($conexao, $_POST["intEmail"]);
+            $senha = mysqli_real_escape_string($conexao, $_POST["intSenha"]);
+
+            // $email = $_POST["intEmail"];
+            // $senha = $_POST["intSenha"];
+
+            $query = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+
+            $resultado = executar($query) or die("Falha na execução da query");
+        
+            if (mysqli_num_rows($resultado) == 1) {
+                $usuario = mysqli_fetch_assoc($resultado);
+        
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+        
+                $_SESSION["id"] = $usuario["id_usuario"];
+                $_SESSION["name"] = $usuario["usuario"];
+        
+                header("Location:list_usuario.php");
+
+            } else {
+                echo "Falha ao logar: usuário ou senha inválidos.";
+            }
+        
+        }
+   }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,31 +53,33 @@
 </head>
 <body>
     <div class="container">
-        <div class="col-mb-3" style="width:350px; border:1px solid #80808080; margin: 3rem auto">
-            <div style="width:60%;  margin: -1rem auto .2rem auto">
+        <div class="col-mb-3" style="width:350px; margin: 1.7rem auto">
+            <div style="width:50%;  margin: -1rem auto .2rem auto">
                 <img src="img/logo.png" alt="logo" style="width:100%">
             </div>
 
-            <div style="margin: 1rem auto; text-align:center">
+            <div style="margin: .5rem auto; text-align:center">
                 <h3>Seja bem vindo.</h3>
             </div>
 
             <div>
-            <form style="padding:20px">
+            <form method="POST" style="padding:20px">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email </label>
-                    <input type="email" class="form-control" style="width:300px;">
+                    <input type="email" name="intEmail" class="form-control" style="width:300px;">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" style="width:300px;">
+                    <input type="password" name="intSenha" class="form-control" style="width:300px;">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="btLogar" class="btn btn-primary" style="width:300px">Entrar</button>
 
-                <a href="list_usuario.php">Usuario</a>
-                <a href="list_ferramenta.php">Ferramenta</a>
             </form>
+
+            <div style="text-align:center">
+                <a href="frmUsuario.php">Cadastrar Usuario</a>
+            </div>
             </div>
         </div>
     </div>

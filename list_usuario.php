@@ -1,5 +1,6 @@
 <?php
     require("includ/crud.php");
+    include("protect.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,17 +19,20 @@
             <div>
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand"> Usuario</a>
+                        <a href="logout.php" class="navbar-brand" style="font-size:2.1rem; margin-left:32px"> <i class="bi bi-box-arrow-in-left"></i> </a>
                         <form class="d-flex" role="search">
                             <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Usuário" >
-                            <button class="btn btn-outline-success" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
+
+                            <button class="btn btn-outline-success" type="submit"> <i class="bi bi-search"></i> </button>
                         </form>
                     </div>
                 </nav>
             </div>
             
+        </div>
+
+        <div class="col-md-10" style="margin:auto; text-align:center">
+            <h1>Bem vindo <?php echo $_SESSION["name"] ?> </h1>  
         </div>
 
         <div class="col-md-10" style="margin:2rem auto; text-align:center">
