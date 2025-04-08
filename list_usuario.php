@@ -62,7 +62,7 @@
                         <td><?= $user["email"] ?></td>
                         
                         <td>
-                            <a href="#" class="btn btn-secondary" value="<?= $user["id_usuario"] ?>" >
+                            <a href="opEditar.php?id=<?= $user['id_usuario'] ?>" class="btn btn-secondary" value="<?= $user["id_usuario"] ?>" >
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                             <a href="opDelete.php?user=1&id=<?= $user['id_usuario'] ?>" class="btn btn-danger">

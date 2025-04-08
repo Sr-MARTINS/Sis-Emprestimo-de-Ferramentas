@@ -41,12 +41,23 @@
         }
     }
 
-
     function addItem($tabela, array $dados) {
         $campos = implode(",", array_keys($dados));
         $valores = "'" .implode("' ,'", $dados) ."'";
 
         $sql = "INSERT INTO $tabela ($campos) VALUES ($valores)";
+
+        return executar($sql);
+    }
+
+    function editItem($tabela, array $dados, $condicao) {
+        $campos = [];
+
+        foreach($dados as $chaves => $valores) {
+            $campos[] ="{$chaves} = '{$valores}' ";
+        } 
+        $campos = implode(",", $campos);
+        $sql = "UPDATE $tabela SET $campos WHERE $condicao";
 
         return executar($sql);
     }

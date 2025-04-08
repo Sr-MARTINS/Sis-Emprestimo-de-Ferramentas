@@ -64,7 +64,7 @@
                         <td><?= $item["status"] ?></td>
                         <td>
 
-                            <a href="opDelete.php?id=<?= $item['id_ferramenta'] ?>" class="btn btn-secondary" >
+                            <a href="opEditar.php?id=<?= $item['id_ferramenta'] ?>" class="btn btn-secondary" >
                                  <i class="bi bi-pencil-square"></i>
                             </a>
                             <a href="opDelete.php?ferramenta=1&id=<?= $item['id_ferramenta'] ?>" class="btn btn-danger" >
