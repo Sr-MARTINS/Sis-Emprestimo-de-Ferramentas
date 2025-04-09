@@ -44,11 +44,8 @@
     function addItem($tabela, array $dados) {
         $campos = implode(",", array_keys($dados));
         $valores = "'" .implode("' ,'", $dados) ."'";
-
+        
         $sql = "INSERT INTO $tabela ($campos) VALUES ($valores)";
-
-        var_dump($sql);
-        // exit;
 
         return executar($sql);
     }

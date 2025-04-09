@@ -123,8 +123,8 @@
         </div> -->
 
                     <!-- TABELA FERRAMENTAS -->
-        <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px">
-            <table class="table col-md-8">
+        <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px; height:445px">
+            <table class="table col-md-8" style="overflow-y:scroll; height:400px" >
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -155,6 +155,7 @@
                             
                         </td>
                     </tr>
+                   
                     <?php } ?>
                 </tbody>
             </table>
