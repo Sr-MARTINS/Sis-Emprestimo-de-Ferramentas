@@ -1,6 +1,27 @@
 <?php
     require("includ/crud.php");
     include("protect.php");
+    
+   if(isset($_POST["busca"])) {
+    $pesq = $_POST["busca"];
+   }
+
+    if(isset($_POST["btPesq"])) {
+        if($pesq != "") {
+    
+            $sql = "SELECT * FROM ferramenta WHERE ferramenta LIKE '%$pesq%' ";
+
+            var_dump($sql);
+
+            $condicao = " ferramenta LIKE '%$pesq%' ";
+
+        }else {
+            $sql = "SELECT * FROM ferramenta" ;
+            $condicao = null ;
+        }
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +48,9 @@
                             </button>
                         </form> -->
                     
-                        <a href="logout.php" class="navbar-brand" style="font-size:2.1rem; margin-left:32px"> <i class="bi bi-box-arrow-in-left"></i> </a>
+                        <a href="logout.php" class="navbar-brand" style="font-size:2.1rem; margin-left:32px">
+                            <i class="bi bi-box-arrow-in-left"></i>
+                         </a>
                         
                     </div>
                 </nav>
@@ -54,9 +77,9 @@
                 <a href="frmFerramenta.php" class="btn btn-success">Cadastrar Ferramenta</a>
             </div>
 
-            <form class="d-flex" role="search">
-                <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Ferramenta" >
-                <button class="btn btn-outline-success" type="submit">
+            <form method="POST" class="d-flex" role="search">
+                <input type="search" name="busca" <?php echo @$_POST["busca"] ?> class="form-control me-2"  placeholder="Buscar Ferramenta" >
+                <button type="submit" name="btPesq" class="btn btn-outline-success" >
                     <i class="bi bi-search"></i>
                 </button>
             </form>
@@ -113,7 +136,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        $itens = consultarTabela("ferramenta");
+                        $itens = consultarTabela("ferramenta",@$condicao);
                         foreach($itens as $item) {
                     ?>
                     <tr>

@@ -10,7 +10,9 @@
 
     
     if($opUsuario ) {
-        header(!empty($ferramenta) ? "Location: list_ferramenta.php" : "Location: list_usuario.php");
+            // AJUSTANDO PARA RETORNAR A PG DE LISTA DE USUARIO
+            header("Location:list_usuario.php");
+        // header(!empty($ferramenta) ? "Location: list_ferramenta.php" : "Location: list_usuario.php");
 
     }
     else {

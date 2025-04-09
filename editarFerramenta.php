@@ -22,7 +22,10 @@
         $opEdit = editItem("ferramenta", $dadosEdit, "id_ferramenta = $id");
 
         if($opEdit) {
-            header("Location: list_ferramenta.php");
+            // header("Location: list_ferramenta.php");
+
+            // Ajuste para ista de pg de usuario
+            header("Location: list_usuario.php");
         }else {
             echo "erro";
         }
