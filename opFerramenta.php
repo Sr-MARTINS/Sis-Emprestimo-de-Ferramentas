@@ -16,7 +16,8 @@
     $op = addItem("ferramenta", $dados);
 
     if($op) {
-        header("Location:list_ferramenta.php");
+        // header("Location:list_ferramenta.php");
+        header("Location:list_usuario.php");
     }else {
         echo"erro";
     }

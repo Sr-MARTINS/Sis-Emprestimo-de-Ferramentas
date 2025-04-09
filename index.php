@@ -9,17 +9,19 @@
             echo "Preencha o campo senha";
         }
         else{
-            $conexao = openConnect();
 
-            $email = mysqli_real_escape_string($conexao, $_POST["intEmail"]);
-            $senha = mysqli_real_escape_string($conexao, $_POST["intSenha"]);
+            $email = $_POST["intEmail"];
+            $senha = $_POST["intSenha"];
 
-            // $email = $_POST["intEmail"];
-            // $senha = $_POST["intSenha"];
+            $senha = hash("sha256", $senha);
 
-            $query = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+            // $email = mysqli_real_escape_string($conexao, $_POST["intEmail"]);
+            // $senha = mysqli_real_escape_string($conexao, $_POST["intSenha"]);
 
-            $resultado = executar($query) or die("Falha na execução da query");
+
+            $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+
+            $resultado = executar($sql) or die(mysqli_error());
         
             if (mysqli_num_rows($resultado) == 1) {
                 $usuario = mysqli_fetch_assoc($resultado);
@@ -34,7 +36,7 @@
                 header("Location:list_usuario.php");
 
             } else {
-                echo "Falha ao logar: usuário ou senha inválidos.";
+                echo "Usuario invalidos.";
             }
         
         }

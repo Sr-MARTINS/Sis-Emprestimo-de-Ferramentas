@@ -17,14 +17,18 @@
     <div class="container-fuid">
         <div>
             <div>
-                <nav class="navbar bg-body-tertiary">
+                <nav class="navbar ">
                     <div class="container-fluid">
-                        <a href="logout.php" class="navbar-brand" style="font-size:2.1rem; margin-left:32px"> <i class="bi bi-box-arrow-in-left"></i> </a>
-                        <form class="d-flex" role="search">
+                        <!-- <h2>Usuario</h2> -->
+                        <!-- <form class="d-flex" role="search">
                             <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Usuário" >
-
-                            <button class="btn btn-outline-success" type="submit"> <i class="bi bi-search"></i> </button>
-                        </form>
+                            <button class="btn btn-outline-success" type="submit">
+                                <i class="bi bi-search"></i> 
+                            </button>
+                        </form> -->
+                    
+                        <a href="logout.php" class="navbar-brand" style="font-size:2.1rem; margin-left:32px"> <i class="bi bi-box-arrow-in-left"></i> </a>
+                        
                     </div>
                 </nav>
             </div>
@@ -36,24 +40,30 @@
         </div>
 
         <div class="col-md-10" style="margin:2rem auto; text-align:center">
-            <h3>Lista de Usuário</h3>  
+            <!-- <h3>Lista de Usuário</h3>   -->
+            <h3>Lista de Ferramenta</h3>  
         </div>
 
         <div class="col-md-10" style="margin:2rem 0 2rem 7rem; display:flex; justify-content:space-between; align-inten:center">
+            
             <div>
                 <a href="index.php" class="btn btn-outline-secondary" >Voltar</a>
-                <a href="frmUsuario.php" class="btn btn-success">Criar Usuário</a>
+
+                    <!-- CADASTRO DE FERRAMENTA -->
+                <!-- <a href="frmUsuario.php" class="btn btn-success">Criar Usuário</a> -->
+                <a href="frmFerramenta.php" class="btn btn-success">Cadastrar Ferramenta</a>
             </div>
 
-            <!-- <form class="d-flex" role="search">
-                <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Usuário" >
+            <form class="d-flex" role="search">
+                <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Ferramenta" >
                 <button class="btn btn-outline-success" type="submit">
                     <i class="bi bi-search"></i>
                 </button>
-            </form> -->
+            </form>
         </div>
 
-        <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px">
+                <!--   TABELA CLIENTES  -->
+        <!-- <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px">
             <table class="table col-md-8">
                 <thead>
                     <tr>
@@ -84,6 +94,44 @@
                          </td>
                     </tr>
                     
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div> -->
+
+                    <!-- TABELA FERRAMENTAS -->
+        <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px">
+            <table class="table col-md-8">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" style="padding-left:20px">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $itens = consultarTabela("ferramenta");
+                        foreach($itens as $item) {
+                    ?>
+                    <tr>
+                        <td><?= $item["id_ferramenta"] ?> </td>
+                        <td><?= $item["ferramenta"] ?></td>
+                        <td><?= $item["descricao"] ?></td>
+                        <td><?= $item["status"] ?></td>
+                        <td>
+
+                            <a href="editarFerramenta.php?id=<?= $item['id_ferramenta'] ?>" class="btn btn-secondary" >
+                                 <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="opDelete.php?ferramenta=1&id=<?= $item['id_ferramenta'] ?>" class="btn btn-danger" >
+                                 <i class="bi bi-trash"></i>
+                            </a> 
+                            
+                        </td>
+                    </tr>
                     <?php } ?>
                 </tbody>
             </table>

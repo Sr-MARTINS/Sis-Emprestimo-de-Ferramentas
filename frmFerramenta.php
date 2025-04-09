@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h3 style="text-align:center">Cadastro de Usuarios</h3>
+        <h3 style="text-align:center">Cadastro Ferramenta</h3>
 
         <div style="margin: 2rem auto;" >
             <div style="margin: 2rem 0 2rem 2rem; ">

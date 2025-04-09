@@ -8,7 +8,6 @@
     $opFerramenta = delete("ferramenta", "id_ferramenta = $id");
     $opUsuario    = delete("usuario", "id_usuario = $id");
 
-    // $location = 
     
     if($opUsuario ) {
         header(!empty($ferramenta) ? "Location: list_ferramenta.php" : "Location: list_usuario.php");

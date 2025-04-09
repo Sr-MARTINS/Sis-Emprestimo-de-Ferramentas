@@ -36,7 +36,7 @@
         </div>
 
         <div class="col-md-10" style="margin:2rem 0 2rem 7rem">
-            <a href="index.php" class="btn btn-outline-secondary" >Voltar</a>
+            <!-- <a href="index.php" class="btn btn-outline-secondary" >Voltar</a> -->
             <a href="frmFerramenta.php" class="btn btn-success">Cadastrar Ferramenta</a>
             
         </div>

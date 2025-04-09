@@ -47,6 +47,9 @@
 
         $sql = "INSERT INTO $tabela ($campos) VALUES ($valores)";
 
+        var_dump($sql);
+        // exit;
+
         return executar($sql);
     }
 

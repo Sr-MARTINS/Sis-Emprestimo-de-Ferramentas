@@ -10,8 +10,8 @@
         $dados = array (
             "usuario"  => $nome,
             "email"    => $email,
-            "senha"    => $senha,
-            // "status"   => $status,
+            "senha"    => hash("sha256", $senha),
+            
         );
 
         $op = addItem("usuario", $dados);
