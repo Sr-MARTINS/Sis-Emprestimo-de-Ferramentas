@@ -1,23 +1,15 @@
 <?php
-    require_once("includ/crud.php");
 
-    $id = $_GET["id"];
+    require_once("./Class/Ferramenta.php");
 
-    $ferramenta = $_GET["ferramenta"];
+    $ferramenta = new Ferramenta();
+    $deleteFerramenta = $ferramenta->excluir($_GET["id"]);
 
-    $opFerramenta = delete("ferramenta", "id_ferramenta = $id");
-    $opUsuario    = delete("usuario", "id_usuario = $id");
 
-    
-    if($opUsuario ) {
-            // AJUSTANDO PARA RETORNAR A PG DE LISTA DE USUARIO
-            header("Location:list_usuario.php");
-        // header(!empty($ferramenta) ? "Location: list_ferramenta.php" : "Location: list_usuario.php");
-
+    if($deleteFerramenta) {
+        header("Location:list_usuario.php");
+    }else {
+        echo "erro";
     }
-    else {
-        print "<META HTTP=REFRESH CONTENT = '0; URL=http://localhost/projetos/desafio/list_ferramenta.php'>
-            <script type = 'text/javascript'> alert('Não foi possivel realizar a operação') </script>";
-    }
-    
+
 ?>

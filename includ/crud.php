@@ -10,7 +10,7 @@
     }
 
     function closeConnect($conexao) {
-        mysqli_close($conexao) or die (msqli_error($conexao));
+        mysqli_close($conexao) or die (mysqli_error($conexao));
 
         return $conexao;
     }

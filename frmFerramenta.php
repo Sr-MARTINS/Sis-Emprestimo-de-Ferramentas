@@ -13,7 +13,7 @@
 
         <div style="margin: 2rem auto;" >
             <div style="margin: 2rem 0 2rem 2rem; ">
-                <a href="list_ferramenta.php" class="btn btn-outline-secondary" >Voltar</a>
+                <a href="list_usuario.php" class="btn btn-outline-secondary" >Voltar</a>
             </div>
             
             <div class="col-md-10" style="margin:auto">
