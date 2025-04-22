@@ -1,5 +1,5 @@
 <?php
-    require_once("includ/crud.php");
+    require("Class/Ferramenta.php");
 
     $ferramenta =  $_POST["intFerramenta"];
     $descricao  =  $_POST["intDescricao"];
@@ -13,7 +13,8 @@
         "status"     => $status,
     );
 
-    $op = addItem("ferramenta", $dados);
+    $ferramenta = new Ferramenta();
+    $op = $ferramenta->salvar($dados);
 
     if($op) {
         // header("Location:list_ferramenta.php");

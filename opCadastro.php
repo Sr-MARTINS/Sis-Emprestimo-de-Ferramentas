@@ -1,5 +1,5 @@
 <?php
-    require("includ/crud.php");
+    require("Class/Usuario.php");
 
     $nome   = $_POST["intNome"];
     $email  = $_POST["intEmail"];
@@ -14,8 +14,9 @@
             
         );
 
-        $op = addItem("usuario", $dados);
-
+        $usuario = new Usuario();
+        $op = $usuario->salvar($dados);
+        
         if($op) {
             header("Location:list_usuario.php");
         }else {

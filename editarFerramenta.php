@@ -1,13 +1,16 @@
 <?php
-    require_once("includ/crud.php");
+    include 'Class/Ferramenta.php';
+    // require_once("includ/crud.php");
 
     $id = $_GET["id"];  
 
-    $dados = consultarTabela("ferramenta", "id_ferramenta = $id");
+    $dados = Ferramenta::buscar($id);
+
         
-    $ferramenta  = $dados[0]["ferramenta"];
-    $descricao   = $dados[0]["descricao"];
-    $status      = $dados[0]["status"];
+    $ferramenta  = $dados->ferramenta;
+    $descricao   = $dados->descricao;
+    $status      = $dados->status;
+
    
     if(isset($_POST["btEditar"])) {
      
@@ -17,11 +20,10 @@
             "status"      => $_POST["status"],
         );
 
-        var_dump($dadosEdit);
+        $edd = new Ferramenta();
+        $editarFerramenta = $edd->editar($id, $dadosEdit );
 
-        $opEdit = editItem("ferramenta", $dadosEdit, "id_ferramenta = $id");
-
-        if($opEdit) {
+        if($editarFerramenta) {
             // header("Location: list_ferramenta.php");
 
             // Ajuste para ista de pg de usuario
@@ -48,7 +50,7 @@
 
         <div style="margin: 2rem auto;" >
             <div style="margin: 2rem 0 2rem 2rem; ">
-                <a href="list_ferramenta.php" class="btn btn-outline-secondary" >Voltar</a>
+                <a href="list_usuario.php" class="btn btn-outline-secondary" >Voltar</a>
             </div>
             
             <div class="col-md-10" style="margin:auto">

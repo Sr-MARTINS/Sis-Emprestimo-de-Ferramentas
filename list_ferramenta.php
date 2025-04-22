@@ -1,5 +1,6 @@
 <?php
-    require_once("includ/crud.php");
+    // require_once("includ/crud.php");
+    require_once("Class/DB.php");
 ?>
 
 <!DOCTYPE html>
@@ -54,20 +55,20 @@
                 </thead>
                 <tbody>
                     <?php
-                        $itens = consultarTabela("ferramenta");
+                        $itens = Ferramenta::listar();
                         foreach($itens as $item) {
                     ?>
                     <tr>
-                        <td><?= $item["id_ferramenta"] ?> </td>
-                        <td><?= $item["ferramenta"] ?></td>
-                        <td><?= $item["descricao"] ?></td>
-                        <td><?= $item["status"] ?></td>
+                        <td><?= $item->id_ferramenta ?> </td>
+                        <td><?= $item->ferramenta ?></td>
+                        <td><?= $item->descricao ?></td>
+                        <td><?= $item->status ?></td>
                         <td>
 
-                            <a href="editarFerramenta.php?id=<?= $item['id_ferramenta'] ?>" class="btn btn-secondary" >
+                            <a href="editarFerramenta.php?id=<?= $item->id_ferramenta ?>" class="btn btn-secondary" >
                                  <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a href="opDelete.php?ferramenta=1&id=<?= $item['id_ferramenta'] ?>" class="btn btn-danger" >
+                            <a href="opDelete.php?ferramenta=1&id=<?= $item->id_ferramenta ?>" class="btn btn-danger" >
                                  <i class="bi bi-trash"></i>
                             </a> 
                             

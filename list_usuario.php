@@ -1,5 +1,5 @@
 <?php
-    require("includ/crud.php");
+    require("Class/Ferramenta.php");
     include("protect.php");
     
    if(isset($_POST["busca"])) {
@@ -40,13 +40,6 @@
             <div>
                 <nav class="navbar ">
                     <div class="container-fluid">
-                        <!-- <h2>Usuario</h2> -->
-                        <!-- <form class="d-flex" role="search">
-                            <input type="search" name="busca" class="form-control me-2"  placeholder="Buscar Usuário" >
-                            <button class="btn btn-outline-success" type="submit">
-                                <i class="bi bi-search"></i> 
-                            </button>
-                        </form> -->
                     
                         <a href="logout.php" class="navbar-brand" style="font-size:2.1rem; margin-left:32px">
                             <i class="bi bi-box-arrow-in-left"></i>
@@ -67,7 +60,7 @@
             <h3>Lista de Ferramenta</h3>  
         </div>
 
-        <div class="col-md-10" style="margin:2rem 0 2rem 7rem; display:flex; justify-content:space-between; align-inten:center">
+        <div class="col-md-10" style="margin:2rem 0 2rem 7rem; display:flex; justify-content:space-between; align-items:center">
             
             <div>
                 <a href="index.php" class="btn btn-outline-secondary" >Voltar</a>
@@ -86,41 +79,6 @@
         </div>
 
                 <!--   TABELA CLIENTES  -->
-        <!-- <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px">
-            <table class="table col-md-8">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Email</th>
-                        <th scope="col" style="padding-left:20px">Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $usuarios = consultarTabela("usuario");
-                        foreach($usuarios as $user) {
-
-                    ?>
-                    <tr>
-                        <td><?= $user["id_usuario"] ?></td>
-                        <td><?= $user["usuario"] ?></td>
-                        <td><?= $user["email"] ?></td>
-                        
-                        <td>
-                            <a href="editarUser.php?id=<?= $user['id_usuario'] ?>" class="btn btn-secondary" value="<?= $user["id_usuario"] ?>" >
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a href="opDelete.php?user=1&id=<?= $user['id_usuario'] ?>" class="btn btn-danger">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                         </td>
-                    </tr>
-                    
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div> -->
 
                     <!-- TABELA FERRAMENTAS -->
         <div class="col-md-10" style="margin:2rem auto; border:1px solid #80808047; padding:20px 10px 20px 50px; height:445px">
@@ -136,20 +94,21 @@
                 </thead>
                 <tbody>
                     <?php
-                        $itens = consultarTabela("ferramenta",@$condicao);
+                        $itens = Ferramenta::listar();
+                        // var_dump($itens);
                         foreach($itens as $item) {
                     ?>
                     <tr>
-                        <td><?= $item["id_ferramenta"] ?> </td>
-                        <td><?= $item["ferramenta"] ?></td>
-                        <td><?= $item["descricao"] ?></td>
-                        <td><?= $item["status"] ?></td>
+                        <td><?= $item->id_ferramenta ?> </td>
+                        <td><?= $item->ferramenta ?></td>
+                        <td><?= $item->descricao ?></td>
+                        <td><?= $item->status ?></td>
                         <td>
 
-                            <a href="editarFerramenta.php?id=<?= $item['id_ferramenta'] ?>" class="btn btn-secondary" >
+                            <a href="editarFerramenta.php?id=<?= $item->id_ferramenta ?>" class="btn btn-secondary" >
                                  <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a href="opDelete.php?ferramenta=1&id=<?= $item['id_ferramenta'] ?>" class="btn btn-danger" >
+                            <a href="opDelete.php?ferramenta=1&id=<?= $item->id_ferramenta ?>" class="btn btn-danger" >
                                  <i class="bi bi-trash"></i>
                             </a> 
                             
